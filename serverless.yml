@@ -3,6 +3,12 @@ service: fastai-hotdog
 provider:
   name: aws
   runtime: python3.6
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - "s3:GetObject"
+        - "s3:ListBucket"
+      Resource: "arn:aws:s3:::fastai-model"
 
 functions:
   hotdog:
