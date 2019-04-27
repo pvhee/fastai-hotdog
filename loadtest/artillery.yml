@@ -1,0 +1,25 @@
+# You can find great documentation of the possibilities at:
+# https://artillery.io/docs/
+config:
+  target: "https://c5nostwq4c.execute-api.us-east-1.amazonaws.com/dev/invoke"
+  phases:
+    -
+      duration: 60 # 1 minute
+      arrivalRate: 10
+      rampTo: 20
+
+  payload:
+    -
+      path: "imagen.csv"
+      fields:
+        - "image"
+
+scenarios:
+
+  -
+    weight: 1
+    flow:
+      - post:
+          url: "/"
+          json:
+            url: "https://github.com/ajschumacher/imagen/blob/master/imagen/{{ image }}?raw=true"

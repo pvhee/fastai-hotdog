@@ -6,14 +6,13 @@ provider:
   iamRoleStatements:
     - Effect: Allow
       Action:
-        - "s3:GetObject"
-        - "s3:ListBucket"
+        - "s3:*"
       Resource: "arn:aws:s3:::fastai-model"
 
 functions:
   hotdog:
     environment:
-      MODEL_BUCKET: fastai-model
+      MODEL_BUCKET: fastai-models-hotdog
       MODEL_KEY: hotdog/model.tar.gz
     handler: handler.lambda_handler
     layers:
