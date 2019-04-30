@@ -21,3 +21,4 @@ functions:
       - http:
           path: invoke
           method: post
+          cors: true
